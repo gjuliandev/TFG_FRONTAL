@@ -1,0 +1,87 @@
+<div class="container">
+
+    <div class="page-header">
+        <img src="../assets/logo.png" height="125">
+    </div>
+
+    <form class="container">
+        <div class="row bs-wizard" style="border-bottom:0;">
+            <!-- complete -->
+            <div class="col bs-wizard-step " [ngClass]="{'complete': paso >= 0}">
+                <div class="text-center bs-wizard-stepnum">Paso 1</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a class="bs-wizard-dot"></a>
+            </div>
+            <div class="col bs-wizard-step" [ngClass]="{'complete': paso >= 1, 'disabled': paso < 1 }">
+                <div class="text-center bs-wizard-stepnum">Paso 2</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a class="bs-wizard-dot"></a>
+            </div>
+            <div class="col bs-wizard-step" [ngClass]="{'complete': paso >= 2, 'disabled': paso < 2}">
+                <div class="text-center bs-wizard-stepnum">Paso 3</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a class="bs-wizard-dot"></a>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="row justify-content-md-center">
+
+        <button class="button-turno" [hidden]="paso !== 0" (click)="next()">COGER TURNO</button>
+
+        <div class="center" [hidden]="paso !== 1">
+            <p [hidden]="paso !== 1">Seleccione los servicios a realizar: </p>
+
+            <div class="servicios" *ngFor="let servicio of servicios; let idx = index">
+                <input type="checkbox" class="btn-check" id={{idx}} autocomplete="off"
+                    (click)="checkService(servicio, idx)" [checked]="servicio.seleccionado">
+                <label class="btn btn-outline-dark button-servicio check-service"
+                    for={{idx}}>{{servicio.nombre}}</label><br>
+            </div>
+
+            <div>
+                <button class="button-avance" [hidden]="paso !== 1" (click)="previous()">ANTERIOR</button>
+                <button class="button-avance" [hidden]="paso !== 1" (click)="next()">SIGUIENTE</button>
+            </div>
+
+        </div>
+
+        <div [hidden]="paso !== 2" class="center">
+            <button class="button-avance" ngxPrint printSectionId="print-section" [useExistingCss]="true"
+                (click)="imprimir_ticket()">IMPRIMIR TICKET</button>
+            <!-- -->
+        </div>
+
+    </div>
+
+    <div class="row justify-content-md-center">
+
+        <div class="col-4 box">
+            <h6 style="margin-top: -70px; margin-bottom: 40px;">Turno actual:</h6>
+            <h1 class="numero">{{turnoActual}}</h1>
+        </div>
+        <div class="col-4 box">
+            <h6 style="margin-top: -70px; margin-bottom: 40px;">Recibirá el turno:</h6>
+            <h1 class="numero">{{siguienteTurno}}</h1>
+        </div>
+        <div class="col-4 center m-t-15">
+            <h6>Siga su turno:</h6>
+            <img class="qr " src="../assets/qr-monitor.png" height="200">
+        </div>
+    </div>
+
+    <div hidden id="print-section">
+        <h1 class="imp-titulo">Tarifa Plana Peluqueros</h1>
+        <h6>SU TURNO ES:</h6>
+        <h2 class="imp-numero">{{siguienteTurno}}</h2>
+        <img src="../assets/qr-monitor.png" class="center" height="70">
+    </div>
+
+</div>

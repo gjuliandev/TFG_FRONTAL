@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+ @import url('https://fonts.googleapis.com/css?family=Muli&family=Pacifico:&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Concert+One:400,700'); */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+.content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
