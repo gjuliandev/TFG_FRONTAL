@@ -1,0 +1,18 @@
+<section>
+    <div class="container">
+
+        <div class="form-login-container">
+            <img src="../../../assets/logo.png" height="150">
+            <div class="form-login-wrapper">
+                <form (ngSubmit)="login()" [formGroup]="userForm">
+                    <input formControlName="usuario" style="text-align: center;" type="text" placeholder="Usuario">
+                    <input formControlName="password" style="text-align: center;" type="password"
+                        placeholder="Contraseña">
+                    <button type="submit" style="text-align: center;">Acceder</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>

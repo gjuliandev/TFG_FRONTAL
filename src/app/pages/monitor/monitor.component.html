@@ -1,0 +1,21 @@
+<div class="container-fluid wrapper">
+    <div class="row align-items-center">
+
+        <div class="col-12 col-sm-12 col-md-4 center m-t-50">
+            <img src="../assets/logo.png" class="center">
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 center fecha m-t-100">
+            <p class="fecha">{{fecha}}</p>
+            <p class="fecha">{{hora}}</p>
+            <p class="status" *ngIf="wsService.socketStatus">servidor: online</p>
+            <p class="status" *ngIf="!wsService.socketStatus">servidor: offline</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <p class="center turno">{{turno}}</p>
+        </div>
+    </div>
+</div>
